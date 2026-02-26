@@ -1,0 +1,65 @@
+# Contributors
+
+This list aggregates authors and sources referenced by skills in this repository.
+
+- 0xterrybit
+- 2mawi2
+- aaronn
+- abe238
+- abk234
+- abtdomain
+- adamkristopher
+- adboio
+- adunne09
+- afajohn
+- afalk42
+- alexander-spring
+- aluvia-connectivity
+- am-will
+- amirbrooks
+- amruthpillai
+- amstko
+- andrewdmwalker
+- andrewjiang
+- anishtr4
+- anscg
+- Anthropic (Sources: anthropics/skills)
+- Anthropic (anthropics/skills) (Sources: https://github.com/anthropics/skills)
+- araa47
+- aranej
+- arein
+- arkaydeus
+- artyomx33
+- arun-8687
+- ascendswang
+- ashirbadgudu
+- ashutosh887
+- ashwingupy
+- asleep123
+- asteinberger
+- aydencook03
+- azade-c
+- basher83
+- bastos
+- coffeefuelbump/csv-data-summarizer-claude-skill (Sources: https://github.com/coffeefuelbump/csv-data-summarizer-claude-skill)
+- ComposioHQ (Sources: ComposioHQ/awesome-claude-skills (composio-skills/wave_accounting-automation); ComposioHQ/awesome-claude-skills (composio-skills/zoho-books-automation))
+- ComposioHQ (awesome-claude-skills) (Sources: https://github.com/ComposioHQ/awesome-claude-skills)
+- HeshamFS/materials-simulation-skills (Sources: https://github.com/HeshamFS/materials-simulation-skills)
+- K-Dense-AI/claude-scientific-skills (Sources: https://github.com/K-Dense-AI/claude-scientific-skills)
+- livelabs-ventures/nano-skills (Sources: https://github.com/livelabs-ventures/nano-skills)
+- mhattingpete/claude-skills-marketplace (Sources: https://github.com/mhattingpete/claude-skills-marketplace)
+- michalparkola/tapestry-skills-for-claude-code (Sources: https://github.com/michalparkola/tapestry-skills-for-claude-code)
+- obra/superpowers (Sources: https://github.com/obra/superpowers)
+- obra/superpowers-skills (Sources: https://github.com/obra/superpowers-skills)
+- OpenAI (Sources: openai/skills)
+- OpenAI (openai/skills) (Sources: https://github.com/openai/skills)
+- Project maintainers (Sources: Reconstructed for this repository (no upstream source found))
+- raintree-technology (Sources: raintree-technology/claude-starter (.claude/skills/stripe))
+- raintree-technology/claude-starter (Sources: https://github.com/raintree-technology/claude-starter)
+- sanjay3290/ai-skills (Sources: https://github.com/sanjay3290/ai-skills)
+- trailofbits/skills (Sources: https://github.com/trailofbits/skills)
+- Unknown
+- Valian/linear-cli-skill (Sources: https://github.com/Valian/linear-cli-skill)
+- Vercel Labs (Sources: vercel-labs/agent-skills)
+- wrsmith108/linear-claude-skill (Sources: https://github.com/wrsmith108/linear-claude-skill)
+- zxkane/aws-skills (Sources: https://github.com/zxkane/aws-skills)

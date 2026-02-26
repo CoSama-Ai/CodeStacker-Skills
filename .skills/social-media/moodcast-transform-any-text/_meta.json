@@ -1,0 +1,11 @@
+{
+  "owner": "ashutosh887",
+  "slug": "moodcast",
+  "displayName": "MoodCast",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1769670131882,
+    "commit": "https://github.com/skill-runner/skills/commit/cb17504933f2bf1f5f44b524d5736c6a342325dd"
+  },
+  "history": []
+}

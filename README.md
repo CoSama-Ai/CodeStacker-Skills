@@ -34,7 +34,7 @@ Each skill contains:
 - **Edge cases** and troubleshooting
 - **Integration guides** for related tools
 
-While these skills can be used with **any AI assistant** (Cursor, GitHub Copilot, GPT, Gemini), they're specifically designed for the **[CodeStacker](https://github.com/CoSama-Ai/CodeStacker)** workflow — giving your AI the context it needs to build production-quality software.
+While these skills can be used with **any AI assistant** (Cursor, GitHub Copilot, GPT, Gemini), they're specifically designed for **[CodeStacker 2.3](https://github.com/CoSama-Ai/CodeStacker)** — the Enterprise-Grade AI agent management system with **Workspaces**, **The Director AI**, and **Rigid Architecture** controls.
 
 ---
 
@@ -149,18 +149,30 @@ The AI will fetch and install them automatically.
 
 ---
 
-## 🔗 Works With CodeStacker
+## 🔗 Works With CodeStacker 2.3
 
-These skills are designed to integrate seamlessly with the **[CodeStacker](https://github.com/CoSama-Ai/CodeStacker)** AI agent management system:
+These skills are designed to integrate seamlessly with **[CodeStacker 2.3](https://github.com/CoSama-Ai/CodeStacker)** — the Enterprise-Grade AI agent management system:
 
 | Feature | How Skills Enhance It |
 |---------|----------------------|
-| **Mode Plan** | AI auto-detects relevant skills by scanning `SKILL_REGISTRY.md` |
-| **Skill Builder** | Missing skills are auto-generated, then flagged for upgrade to community versions |
-| **Tag System** | Query skills with `#react`, `#supabase`, `#docker` for instant lookup |
-| **Structure-Aware** | Skills teach AI your actual tech stack before planning |
+| **🎬 The Director AI** | Skills are attached during the Director's goal-definition interview — ensuring the right expertise is loaded before coding begins |
+| **🏢 Isolated Epic Workspaces** | Each workspace loads only the skills it needs, preventing context overload |
+| **🗂️ Federated Master Index** | Skills are indexed in `SKILL_REGISTRY.md` and synced to the master architecture index |
+| **🤖 AGENT_REGISTRY.md** | Specialized Agent Personas reference specific skills for their domain (e.g., "Security Auditor" loads security skills) |
+| **🧰 TOOL_REGISTRY.md** | Skills define tool capabilities (Postgres CLI, Firecrawl, etc.) that the Dynamic Tool Registry scans |
+| **🔑 Credential Protocol** | All skills follow strict security standards — no plaintext API keys, only `.env` variable references |
+| **📋 Mode Plan** | AI auto-detects relevant skills by scanning `SKILL_REGISTRY.md` during planning |
+| **🔍 Tag System** | Query skills with `#react`, `#supabase`, `#docker` for instant lookup |
 
 > 🚀 **New to CodeStacker?** [Get started here →](https://github.com/CoSama-Ai/CodeStacker#-quick-start)
+
+### Version 2.3 New Features
+
+CodeStacker 2.3 introduces **Rigid Architecture** for production AI development:
+
+- **Complexity Governance Gates** — Skills guide AI behavior under `Gate Review` (human-in-the-loop) or `Gate Full Auto` (maximum velocity)
+- **Visual Dashboard & Telemetry** — Track skill usage and effectiveness via Mermaid charts in `dashboard.md`
+- **Context Window Management** — Skills are intelligently loaded/unloaded to prevent token limit issues
 
 ---
 

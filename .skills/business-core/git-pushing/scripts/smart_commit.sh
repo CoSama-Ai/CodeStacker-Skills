@@ -15,6 +15,20 @@ info() { echo -e "${GREEN}→${NC} $1"; }
 warn() { echo -e "${YELLOW}⚠${NC} $1"; }
 error() { echo -e "${RED}✗${NC} $1" >&2; }
 
+# Push helper with one-time rebase retry for non-fast-forward
+push_with_retry() {
+    local push_cmd=("$@")
+    if "${push_cmd[@]}"; then
+        return 0
+    fi
+    warn "Push failed, attempting to rebase on origin/$CURRENT_BRANCH..."
+    if git pull --rebase origin "$CURRENT_BRANCH"; then
+        "${push_cmd[@]}"
+    else
+        return 1
+    fi
+}
+
 # Get current branch (handle repos with no commits yet)
 CURRENT_BRANCH=$(git symbolic-ref --short -q HEAD || echo "main")
 info "Current branch: $CURRENT_BRANCH"
@@ -33,10 +47,16 @@ if [ -z "$(git status --porcelain)" ]; then
     UPSTREAM_REF=$(git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null || true)
     if [ -n "$UPSTREAM_REF" ]; then
         info "Pushing to origin/$CURRENT_BRANCH..."
-        git push
+        if ! push_with_retry git push; then
+            error "Push failed"
+            exit 1
+        fi
     else
         info "Pushing to origin/$CURRENT_BRANCH with upstream..."
-        git push -u origin "$CURRENT_BRANCH"
+        if ! push_with_retry git push -u origin "$CURRENT_BRANCH"; then
+            error "Push failed"
+            exit 1
+        fi
     fi
     exit 0
 fi
@@ -144,7 +164,7 @@ UPSTREAM_REF=$(git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null 
 # Check if branch exists on remote
 if [ -n "$UPSTREAM_REF" ]; then
     # Upstream already set, just push
-    if git push; then
+    if push_with_retry git push; then
         info "Successfully pushed to origin/$CURRENT_BRANCH"
         echo "$DIFF_STAT"
     else
@@ -153,7 +173,7 @@ if [ -n "$UPSTREAM_REF" ]; then
     fi
 elif git ls-remote --exit-code --heads origin "$CURRENT_BRANCH" >/dev/null 2>&1; then
     # Branch exists, just push
-    if git push -u origin "$CURRENT_BRANCH"; then
+    if push_with_retry git push -u origin "$CURRENT_BRANCH"; then
         info "Successfully pushed to origin/$CURRENT_BRANCH"
         echo "$DIFF_STAT"
     else
@@ -162,7 +182,7 @@ elif git ls-remote --exit-code --heads origin "$CURRENT_BRANCH" >/dev/null 2>&1;
     fi
 else
     # New branch, push with -u
-    if git push -u origin "$CURRENT_BRANCH"; then
+    if push_with_retry git push -u origin "$CURRENT_BRANCH"; then
         info "Successfully pushed new branch to origin/$CURRENT_BRANCH"
         echo "$DIFF_STAT"
 

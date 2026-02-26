@@ -30,11 +30,12 @@ fi
 if [ -z "$(git status --porcelain)" ]; then
     warn "No changes to commit"
     # Still try to push in case previous push failed or was interrupted
-    if git ls-remote --exit-code --heads origin "$CURRENT_BRANCH" >/dev/null 2>&1; then
+    UPSTREAM_REF=$(git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null || true)
+    if [ -n "$UPSTREAM_REF" ]; then
         info "Pushing to origin/$CURRENT_BRANCH..."
         git push
     else
-        info "Pushing new branch to origin/$CURRENT_BRANCH..."
+        info "Pushing to origin/$CURRENT_BRANCH with upstream..."
         git push -u origin "$CURRENT_BRANCH"
     fi
     exit 0
@@ -137,10 +138,22 @@ info "Created commit: $COMMIT_HASH"
 # Push to remote
 info "Pushing to origin/$CURRENT_BRANCH..."
 
+# Determine if upstream is set
+UPSTREAM_REF=$(git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null || true)
+
 # Check if branch exists on remote
-if git ls-remote --exit-code --heads origin "$CURRENT_BRANCH" >/dev/null 2>&1; then
-    # Branch exists, just push
+if [ -n "$UPSTREAM_REF" ]; then
+    # Upstream already set, just push
     if git push; then
+        info "Successfully pushed to origin/$CURRENT_BRANCH"
+        echo "$DIFF_STAT"
+    else
+        error "Push failed"
+        exit 1
+    fi
+elif git ls-remote --exit-code --heads origin "$CURRENT_BRANCH" >/dev/null 2>&1; then
+    # Branch exists, just push
+    if git push -u origin "$CURRENT_BRANCH"; then
         info "Successfully pushed to origin/$CURRENT_BRANCH"
         echo "$DIFF_STAT"
     else

@@ -29,6 +29,14 @@ fi
 # Check if there are changes (including untracked)
 if [ -z "$(git status --porcelain)" ]; then
     warn "No changes to commit"
+    # Still try to push in case previous push failed or was interrupted
+    if git ls-remote --exit-code --heads origin "$CURRENT_BRANCH" >/dev/null 2>&1; then
+        info "Pushing to origin/$CURRENT_BRANCH..."
+        git push
+    else
+        info "Pushing new branch to origin/$CURRENT_BRANCH..."
+        git push -u origin "$CURRENT_BRANCH"
+    fi
     exit 0
 fi
 
